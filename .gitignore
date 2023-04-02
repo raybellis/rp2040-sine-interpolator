@@ -1,0 +1,10 @@
+CMakeCache.txt
+CMakeFiles
+Makefile
+sine_wave_interp.*
+cmake_install.cmake
+elf2uf2
+generated
+pico-sdk
+pico_extras
+pioasm
