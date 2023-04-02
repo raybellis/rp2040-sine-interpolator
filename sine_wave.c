@@ -71,9 +71,9 @@ int main() {
     // set up the interpolator so that its output is a
     // pointer directly into the 16-bit wave table.
     interp_config cfg = interp_default_config();
-    interp_config_set_shift(&cfg, 15);		// 16 bit sub-position, but the table entries are 2 bytes
-    interp_config_set_mask(&cfg, 1, 11);	// mask the output to the range 2 .. (2 << 11)
-    interp_config_set_add_raw(&cfg, true);	// add the raw step size, not the shifted and masked
+    interp_config_set_shift(&cfg, 15);        // 16 bit sub-position, but the table entries are 2 bytes
+    interp_config_set_mask(&cfg, 1, 11);    // mask the output to the range 2 .. (2 << 11)
+    interp_config_set_add_raw(&cfg, true);    // add the raw step size, not the shifted and masked
     interp_set_config(interp0, 0, &cfg);
 
     interp0->accum[0] = 0;
@@ -95,12 +95,12 @@ int main() {
         struct audio_buffer *buffer = take_audio_buffer(ap, true);
         int16_t *samples = (int16_t *) buffer->buffer->bytes;
 
-		// update the interpolator step size
+        // update the interpolator step size
         interp0->base[0] = step;
 
         for (uint i = 0; i < buffer->max_sample_count; ) {
-			// get the sample pointer from the interpolator
-			int16_t *p  = interp0->pop[2];
+            // get the sample pointer from the interpolator
+            int16_t *p  = interp0->pop[2];
             samples[i++] = (vol * (*p)) >> 8u;
         }
 
